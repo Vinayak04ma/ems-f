@@ -170,13 +170,13 @@ const CreateTask = () => {
     <div
       className={`p-5 mt-5 rounded ${
         theme === "dark"
-          ? "bg-gray-900 text-white"
+          ? "bg-[#1c1c1c] text-white"
           : "bg-gray-300 text-gray-800 border border-gray-300"
       }`}
     >
       <form
         onSubmit={submitHandler}
-        className="flex flex-wrap w-full items-start justify-between"
+        className="flex flex-wrap w-full items-start justify-between "
       >
         <div className="w-1/2">
           <div>
@@ -192,8 +192,8 @@ const CreateTask = () => {
               onChange={(e) => setTaskTitle(e.target.value)}
               className={`text-sm py-2 px-3 w-4/5 rounded outline-none bg-transparent mb-4 ${
                 theme === "dark"
-                  ? "border-gray-500 text-white bg-gray-800"
-                  : "border-gray-400 text-gray-800 bg-gray-50"
+                  ? "border-[1px] border-gray-400 text-white bg-gray-800"
+                  : "border-gray-400 border-[1px] text-gray-800 bg-gray-50"
               }`}
               type="text"
               placeholder="Make a UI design"
@@ -212,8 +212,8 @@ const CreateTask = () => {
               onChange={(e) => setTaskDate(e.target.value)}
               className={`text-sm py-2 px-3 w-4/5 rounded outline-none bg-transparent mb-4 ${
                 theme === "dark"
-                  ? "border-gray-500 text-white bg-gray-800"
-                  : "border-gray-400 text-gray-800 bg-gray-50"
+                  ? " border-[1px] border-gray-500 text-white bg-gray-800"
+                  : "border-[1px] border-gray-400 text-gray-800 bg-gray-50"
               }`}
               type="date"
             />
@@ -231,8 +231,8 @@ const CreateTask = () => {
               onChange={(e) => setAsignTo(e.target.value)}
               className={`text-sm py-2 px-3 w-4/5 rounded outline-none bg-transparent mb-4 ${
                 theme === "dark"
-                  ? "border-gray-500 text-white bg-gray-800"
-                  : "border-gray-400 text-gray-800 bg-gray-50"
+                  ? "border-[1px] border-gray-500 text-white bg-gray-800"
+                  : "border-[1px] border-gray-400 text-gray-800 bg-gray-50"
               }`}
               type="text"
               placeholder="Employee name"
@@ -251,8 +251,8 @@ const CreateTask = () => {
               onChange={(e) => setCategory(e.target.value)}
               className={`text-sm py-2 px-3 w-4/5 rounded outline-none bg-transparent mb-4 ${
                 theme === "dark"
-                  ? "border-gray-500 text-white bg-gray-800"
-                  : "border-gray-400 text-gray-800 bg-gray-50"
+                  ? "border-[1px] border-gray-500 text-white bg-gray-800"
+                  : "border-[1px] border-gray-400 text-gray-800 bg-gray-50"
               }`}
               type="text"
               placeholder="design, dev, etc"
@@ -273,8 +273,8 @@ const CreateTask = () => {
             onChange={(e) => setTaskDescription(e.target.value)}
             className={`w-full h-44 text-sm py-2 px-3 rounded outline-none bg-transparent mb-4 ${
               theme === "dark"
-                ? "border-gray-500 text-white bg-gray-800"
-                : "border-gray-400 text-gray-800 bg-gray-50"
+                ? "border-[1px] border-gray-500 text-white bg-gray-800"
+                : "border-[1px] border-gray-400 text-gray-800 bg-gray-50"
             }`}
           ></textarea>
           <button
@@ -293,6 +293,7 @@ const CreateTask = () => {
 };
 
 export default CreateTask;
+
 
 
 
