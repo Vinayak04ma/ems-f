@@ -3,8 +3,17 @@ import { AuthContext } from "../../context/AuthProvider";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const AllTask = () => {
-  const [userData] = useContext(AuthContext);
+  const [userData, setUserData] = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
+
+  const handleRemoveEmployee = (id) => {
+    // Filter out the employee with the given ID
+    const updatedUserData = userData.filter((employee) => employee.id !== id);
+
+    // Update the context and localStorage
+    setUserData(updatedUserData);
+    localStorage.setItem("employees", JSON.stringify(updatedUserData));
+  };
 
   return (
     <div
@@ -22,40 +31,51 @@ const AllTask = () => {
         <h5 className="text-lg font-medium w-1/5">Active Task</h5>
         <h5 className="text-lg font-medium w-1/5">Completed</h5>
         <h5 className="text-lg font-medium w-1/5">Failed</h5>
+        <span className="text-lg font-medium w-1/5">Actions</span>
       </div>
       <div>
-        {userData.map((elem, idx) => (
+        {userData.map((employee) => (
           <div
-            key={idx}
+            key={employee.id}
             className={`border-2 mb-2 py-2 px-4 flex justify-between rounded ${
               theme === "dark" ? "border-emerald-500" : "border-blue-400"
             }`}
           >
-            <h2 className="text-lg font-medium w-1/5">{elem.firstName}</h2>
+            <h2 className="text-lg font-medium w-1/5">{employee.firstName}</h2>
             <h3
               className={`text-lg font-medium w-1/5 ${
                 theme === "dark" ? "text-blue-400" : "text-blue-600"
               }`}
             >
-              {elem.taskCounts.newTask}
+              {employee.taskCounts.newTask}
             </h3>
             <h5
               className={`text-lg font-medium w-1/5 ${
                 theme === "dark" ? "text-yellow-400" : "text-yellow-600"
               }`}
             >
-              {elem.taskCounts.active}
+              {employee.taskCounts.active}
             </h5>
             <h5 className="text-lg font-medium w-1/5">
-              {elem.taskCounts.completed}
+              {employee.taskCounts.completed}
             </h5>
             <h5
               className={`text-lg font-medium w-1/5 ${
                 theme === "dark" ? "text-red-600" : "text-red-400"
               }`}
             >
-              {elem.taskCounts.failed}
+              {employee.taskCounts.failed}
             </h5>
+            <button
+              onClick={() => handleRemoveEmployee(employee.id)}
+              className={`text-sm px-3 py-2 rounded ${
+                theme === "dark"
+                  ? "bg-red-600 text-white hover:bg-red-700"
+                  : "bg-red-400 text-white hover:bg-red-500"
+              }`}
+            >
+              Remove
+            </button>
           </div>
         ))}
       </div>
@@ -64,3 +84,4 @@ const AllTask = () => {
 };
 
 export default AllTask;
+
