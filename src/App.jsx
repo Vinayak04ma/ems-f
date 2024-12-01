@@ -64,6 +64,7 @@ import AdminDashboard from './componets/Dashboard/AdminDashboard';
 import AddEmployee from './componets/Dashboard/AddEmployee'; // Ensure this component exists
 import { AuthContext } from './context/AuthProvider';
 import { ThemeProvider } from './context/ThemeContext';
+import ChangeCredentials from "./componets/other/ChangeCredentials"
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -125,9 +126,14 @@ const App = () => {
       {user === 'employee' && (
         <Route path="/employee-dashboard" element={<EmployeeDashboard changeUser={handleLogout} data={loggedInUserData} />} />
       )}
+       <Route
+           path="/change-credentials"
+           element={<ChangeCredentials />}
+      />
 
       {/* Fallback Route */}
       <Route path="*" element={<Navigate to="/" />} />
+     
     </Routes>
   );
 };
